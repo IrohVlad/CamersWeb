@@ -2,9 +2,11 @@ import React from 'react';
 
 const MainPage = () => {
     return (
-        <div>
-            Main
-        </div>
+        <main>
+            <section className='section-1'>
+                dawd
+            </section>
+        </main>
     );
 };
 

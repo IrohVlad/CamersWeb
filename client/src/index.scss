@@ -260,6 +260,7 @@ body{
     width: inherit;
     overflow: hidden;
     position: relative;
+    height: 100vh;
 }
 ._container{
     box-sizing: content-box;
@@ -291,15 +292,155 @@ header{
                 height: 45px;
                 width: 45px;
                 background-color:#b3d4fc;
+                margin-right: 10px;
                 img{
                     height: 100%;
                     width: 100%;
                 }
             }
             .logo__title{
+                font-size: 15px;
                 display: flex;
                 align-items:center;
             }
         }
+        .nav{
+            font-size: 15px;
+            display: flex;
+            .nav__item:not(:last-child){
+                margin-right: 15px;
+            }
+        }
+        .burger_container{
+            display: none;
+            height: 50px;
+            width: 50px;
+            .burger{
+                transition: height;
+                transition-duration: 500ms;
+                height: 50px;
+                width: 50px;
+                .burger__lines{
+                    height: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    align-items:center;
+                    justify-content: space-around;
+                    .burger__line{
+                        height: 6px;
+                        width: 100%;
+
+                        background-color:white;
+                    }
+                }
+                .burger__content{
+                    display: none;
+                }
+            }
+        }
+        .burger_active {
+            
+            z-index: 2;
+            position: absolute;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            .burger{
+                position: absolute;
+                top: 0;
+                right: 0;
+                background-color:rgb(50, 37, 58);
+                height: fit-content;
+                width: 300px;
+                .burger__lines{
+                    display: none;
+                }
+                .burger__content{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    .nav__item{
+                        padding: 10px 0;
+                        margin: 10px 0;
+                    }
+                }
+            }
+        }
     }
+}
+/*-----------------------------------------main------------------------------------------------------------*/
+
+
+/*-----------------------------------------footer------------------------------------------------------------*/
+
+/*-----------------------------------------media------------------------------------------------------------*/
+@media(max-width: 970px){
+
+}
+@media(max-width: 750px){
+    header{
+        background-color: rgb(147, 134, 134);
+        color: white;
+        .header{
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            .logo{
+                display: flex;
+                .logo__icon{
+                    height: 45px;
+                    width: 45px;
+                    background-color:#b3d4fc;
+                    margin-right: 10px;
+                    img{
+                        height: 100%;
+                        width: 100%;
+                    }
+                }
+                .logo__title{
+                    font-size: 15px;
+                    display: flex;
+                    align-items:center;
+                }
+            }
+            .nav{
+                font-size: 15px;
+                display: none;
+                .nav__item:not(:last-child){
+                    margin-right: 15px;
+                }
+            }
+            .burger_container{
+                display: block;
+                height: 50px;
+                width: 50px;
+                .burger{
+                    transition: height;
+                    transition-duration: 500ms;
+                    height: 50px;
+                    width: 50px;
+                    .burger__lines{
+                        height: 100%;
+                        display: flex;
+                        flex-direction: column;
+                        align-items:center;
+                        justify-content: space-around;
+                        .burger__line{
+                            height: 6px;
+                            width: 100%;
+    
+                            background-color:white;
+                        }
+                    }
+                    .burger__content{
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}
+@media(max-width: 550px){
+
 }
