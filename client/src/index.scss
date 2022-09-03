@@ -276,3 +276,30 @@ body{
         color: #FF2E00;
     }
 }
+/*-----------------------------------------header------------------------------------------------------------*/
+header{
+    background-color: rgb(147, 134, 134);
+    color: white;
+    .header{
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .logo{
+            display: flex;
+            .logo__icon{
+                height: 45px;
+                width: 45px;
+                background-color:#b3d4fc;
+                img{
+                    height: 100%;
+                    width: 100%;
+                }
+            }
+            .logo__title{
+                display: flex;
+                align-items:center;
+            }
+        }
+    }
+}
