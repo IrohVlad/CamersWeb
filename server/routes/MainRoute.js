@@ -5,6 +5,6 @@ const router = Router();
 
 router.get('/', MainController.getContent);
 router.put('/', MainController.changeContent);
-router.post('/', MainController.addContent);
+// router.post('/', MainController.addContent);
 
 export default router;
