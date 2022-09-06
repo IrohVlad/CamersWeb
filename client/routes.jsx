@@ -1,10 +1,11 @@
 import React from "react";
-import { MAIN_ROUTE, BLOG_ROUTE, CONTACTS_ROUTE, PRICE_ROUTE, ADMIN_ROUTE } from "./utils/const";
+import { MAIN_ROUTE, BLOG_ROUTE, CONTACTS_ROUTE, PRICE_ROUTE, ADMIN_ROUTE, LOGIN_ROUTE } from "./utils/const";
 import MainPage from './pages/MainPage.jsx';
 import BlogPage from './pages/BlogPage.jsx';
 import ContactsPage from './pages/ContactsPage.jsx';
 import PricePage from './pages/PricePage.jsx';
 import AdminPage from './pages/AdminPage.jsx';
+import LoginPage from "./pages/LoginPage.jsx";
 
 
 
@@ -30,5 +31,9 @@ export const Rout = [
     {
         path: ADMIN_ROUTE,
         Component: <AdminPage/>
+    },
+    {
+        path: LOGIN_ROUTE,
+        Component: <LoginPage/>
     }
 ]

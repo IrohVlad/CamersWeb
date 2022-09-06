@@ -446,12 +446,14 @@ header{
 /*-----------------------------------------footer------------------------------------------------------------*/
 /*-----------------------------------------admin------------------------------------------------------------*/
 .admin{
-    margin-top: 150px;
+    height: 100vh;
+    background-color:#000;
     display: flex;
     flex-direction: column;
     align-items:center;
+    justify-content: center;
     .main-content{
-        background-color:#000;
+
         padding: 15px;
         border: 2px solid black;
         border-radius: 15px;
@@ -464,6 +466,8 @@ header{
             }
             position: relative;
             input{
+                border: 2px solid black;
+                border-radius: 15px;
                 width: 100%;
                 &:focus ~ span, :valid ~ span{
                     color:white;
@@ -477,6 +481,8 @@ header{
                 }
             }
             textarea{
+                border: 2px solid black;
+                border-radius: 15px;
                 width: 100%;
                 &:focus ~ span, :valid ~ span{
                     color:white;
@@ -493,10 +499,65 @@ header{
                 font-size: 15px;
                 position: absolute;
                 top:0;
-                left: 0;
+                left: 13px;
             }
         }
     }
+}
+/*-----------------------------------------login------------------------------------------------------------*/
+.login{
+    height: 100vh;
+    background-color:#000;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+    form{
+        height: fit-content;
+        width: 300px;
+        div{
+            position: relative;
+            input{
+                height: 30px;
+                border: 2px solid rgb(249, 60, 18);
+                background-color:#000;
+                border-radius: 15px;
+                color:white;
+                width: 100%;
+                &:focus ~ span, :valid ~ span{
+                    transition: all;
+                    transition-duration: 300ms;
+                    padding: 0 5px;
+                    transform: translateY(-20px) translateX(100px);
+                    background-color:#000;
+                }
+                &:valid ~ span{
+                    transition: all;
+                    transition-duration: 300ms;
+                    padding: 0 5px;
+                    transform: translateY(-20px) translateX(100px);
+                    background-color:#000;
+                }
+            }
+            span{
+                color:rgb(249, 60, 18);
+                font-size: 15px;
+                position: absolute;
+                top:10px;
+                left: 13px;
+            }
+        }
+        button{
+            margin-top: 20px;
+            width: 100%;
+            color:rgb(249, 60, 18);
+            background-color:#000;
+            border: 2px solid rgb(249, 60, 18);
+            border-radius: 15px;
+            height: 30px;
+        }
+    }
+
 }
 /*-----------------------------------------media------------------------------------------------------------*/
 @media(max-width: 970px){

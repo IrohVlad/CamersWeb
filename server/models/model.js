@@ -27,7 +27,10 @@ const Posts = sequelize.define('posts', {
     img: {type: DataTypes.STRING, allowNull: false},
     text: {type: DataTypes.STRING, allowNull: false},
 })
+const Admin = sequelize.define('admin', {
+    password: {type: DataTypes.STRING, allowNull: false}
+})
 
 
 
-export {MainContent, WhyUsCards, PriceList, Posts};
+export {MainContent, WhyUsCards, PriceList, Posts, Admin};

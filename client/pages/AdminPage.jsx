@@ -39,7 +39,8 @@ const AdminPage = () => {
                     <button onClick={()=>{
                         fetchMainPut(JSON.stringify({img, logo, title, disc, whyUsText}));
                         console.log(JSON.stringify({img, logo, title, disc, whyUsText}));
-                        }}>Обновить</button>
+                        }}>Обновить
+                    </button>
                 </div>
             </section>
         </main>

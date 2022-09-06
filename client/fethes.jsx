@@ -36,8 +36,8 @@ export async function fetchMain(func){
 export async function fetchMainPut(inf){
     await fetch(`http://localhost:7000/api/main`, {
     method: 'PUT',
+
     headers: {
-        'Accept': 'application/json',
         'Content-type': 'aplication/json'
     },
     body: inf

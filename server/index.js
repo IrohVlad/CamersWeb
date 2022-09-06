@@ -18,8 +18,13 @@ app.use('/api', router);
 app.use(errorHandling);
 
 const start = async () => {
-    await sequelize.authenticate();
-    await sequelize.sync();
-    app.listen(PORT, ()=> console.log(`server started on ${PORT}`));   
+    try {
+        await sequelize.authenticate();
+        await sequelize.sync();
+        app.listen(PORT, ()=> console.log(`server started on ${PORT}`));   
+    }
+    catch{
+        throw new Error('не удалось запустить')
+    }
 }
 start();
