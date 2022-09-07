@@ -10,7 +10,7 @@ const AdminPage = () => {
     }, [])
     return (
         <main>
-            <section className="admin _container">
+            <section className="admin">
                 <div className="main-content">
                     <div className="title-input">
                         <input onChange={(e)=>{
@@ -37,8 +37,7 @@ const AdminPage = () => {
                         <span>"Почему мы" текст</span>
                     </div>
                     <button onClick={()=>{
-                        fetchMainPut(JSON.stringify({img, logo, title, disc, whyUsText}));
-                        console.log(JSON.stringify({img, logo, title, disc, whyUsText}));
+                        fetchMainPut({img, logo, title, disc, whyUsText});
                         }}>Обновить
                     </button>
                 </div>

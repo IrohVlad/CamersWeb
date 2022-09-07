@@ -3,7 +3,7 @@ class PostsController {
         res.json('posts');
     }
     async postPost(req, res){
-
+        res.json('img');
     }
     async changePost(req, res){
 

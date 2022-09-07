@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
-import {Admin} from '../models/model.js'
+import {Admin} from '../models/model.js';
 class AuthController{
     async login(req, res){
         // const token = jwt.sign()
