@@ -1,13 +1,20 @@
 import React, {useEffect, useState} from 'react';
+import WhyUsCard from '../src/components/WhyUsCard.jsx';
 import { SERVER } from '../utils/const.js';
-import { fetchMain } from '../fethes.jsx';
+import { fetchMain, fetchCards } from '../fethes.jsx';
 
 const MainPage = () => {
+    // const cardsInfo = [{
+    // icon: "ideaIcon.png",
+    // text: "Скорость",}];
     const [mainInfo, setMainInfo] = useState({});
-
+    const [cardsInfo, setCardsInfo] = useState([]);
     useEffect(()=>{
         fetchMain(setMainInfo);
+        fetchCards(setCardsInfo);
     }, [])
+    console.log(cardsInfo);
+    console.log(mainInfo);
     return (
         <main>
             <section className='section-1'>
@@ -18,30 +25,7 @@ const MainPage = () => {
                 <div className="section-2__title">Почему мы?</div>
                 <div className="section-2__text">{mainInfo.whyUsText}</div>
                 <div className="section-2__content">
-                    <div className="card">
-                        <div className="card__icon">
-                            <img src="" alt="" />
-                        </div>
-                        <div className="card__text">
-                            edfsef sefsefsefd dddddd dddddddd dddddddd ddddddddddddd
-                        </div>
-                    </div>
-                    <div className="card">
-                        <div className="card__icon">
-                            <img src="" alt="" />
-                        </div>
-                        <div className="card__text">
-                            edfsefsefs efsefdhhhh hhhhhhhhhhhhh
-                        </div>
-                    </div>
-                    <div className="card">
-                        <div className="card__icon">
-                            <img src="" alt="" />
-                        </div>
-                        <div className="card__text">
-                            edfsefs efsefsefdgrdrg ggggggggggg ggggggggggggggg gggggggggg gggggggggg
-                        </div>
-                    </div>
+                    {cardsInfo.map((item)=> <WhyUsCard info={item} />)}
                 </div>
             </section>
         </main>

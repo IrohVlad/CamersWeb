@@ -38,8 +38,19 @@ export async function fetchMainPut(inf){
     method: 'PUT',
 
     headers: {
-        'Content-type': 'aplication/json'
+        'Content-type': 'aplication/json',
     },
-    body: inf
+    body: {"id":"cc"}
+    });
+}
+export async function fetchCards(func){
+    await fetch(`http://localhost:7000/api/why`, {
+    method: 'GET',
+    headers: {
+        'Content-type': 'aplication/json'
+    }
+    }).then(data=> data.json())
+    .then(data =>{
+       func(data);
     });
 }
