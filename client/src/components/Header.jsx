@@ -1,18 +1,21 @@
 import React, {useState, useEffect} from 'react';
+import { useParams } from 'react-router-dom';
 import HeaderNav from './HeaderNav.jsx';
 import { SERVER } from '../../utils/const.js';
 import { fetchMain } from '../../fethes.jsx';
+import { useLocation } from 'react-router-dom';
 
 const Header = () => {
     const [burger, setBurger] = useState(false);
     const [mainInfo, setMainInfo] = useState({});
-
-    useEffect(()=>{
+    const route = useLocation(); 
+    console.log(route.pathname);
+    useEffect(()=>{ 
         fetchMain(setMainInfo);
     }, [])
     return (
         <header>
-            <div className="header _container">
+            <div className={route.pathname == "/" ? "header _container" : "header _container header__color"}>
                 <div className="header__logo logo">
                     <div className="logo__icon">
                         <img src={`${SERVER}/${mainInfo.logo}`} alt="" />

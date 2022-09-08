@@ -1,9 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import { SERVER } from '../utils/const.js';
 import { fetchMain, fetchMainPut } from '../fethes.jsx';
+import Post from '../src/components/Post.jsx';
 
 const AdminPage = () => {
     const [{img, logo, title, disc, whyUsText}, setMainInfo] = useState({});
+    
 
     useEffect(()=>{
         fetchMain(setMainInfo);
@@ -41,6 +43,9 @@ const AdminPage = () => {
                         }}>Обновить
                     </button>
                 </div>
+                <ul className="posts__container _container">
+                    {}  
+                </ul>
             </section>
         </main>
     );
