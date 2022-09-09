@@ -55,3 +55,14 @@ export async function fetchCards(func){
        func(data);
     });
 }
+export async function fetchPosts(func){
+    await fetch(`http://localhost:7000/api/posts`, {
+    method: 'GET',
+    headers: {
+        'Content-type': 'aplication/json'
+    }
+    }).then(data=> data.json())
+    .then(data =>{
+       func(data);
+    });
+}

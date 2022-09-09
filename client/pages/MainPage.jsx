@@ -13,8 +13,6 @@ const MainPage = () => {
         fetchMain(setMainInfo);
         fetchCards(setCardsInfo);
     }, [])
-    console.log(cardsInfo);
-    console.log(mainInfo);
     return (
         <main>
             <section className='section-1'>

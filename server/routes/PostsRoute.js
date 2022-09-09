@@ -3,19 +3,19 @@ import PostsController from "../controllers/PostsController.js";
 import multer from 'multer';
 
 const storage = multer.diskStorage({
-    destination: (_, __, cb)=>{
+    destination: (_, __, cb) => {
         cb(null, 'static');
     },
-    filename:(_, file, cb)=>{
+    filename: (_, file, cb) => {
         cb(null, file.originalname);
     },
 })
-const upload = multer({storage});
+const upload = multer({ storage });
 
 const router = Router();
-
+// upload.single('image')
 router.get('/', PostsController.getPosts);
-router.post('/', upload.single('image'), PostsController.postPost);
+router.post('/', PostsController.postPost);
 router.put('/', PostsController.changePost);
 router.delete('/', PostsController.deletePost)
 

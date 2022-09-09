@@ -1,14 +1,17 @@
 import React, {useEffect, useState} from 'react';
 import { SERVER } from '../utils/const.js';
-import { fetchMain, fetchMainPut } from '../fethes.jsx';
+import { fetchMain, fetchPosts, fetchMainPut } from '../fethes.jsx';
 import Post from '../src/components/Post.jsx';
 
 const AdminPage = () => {
     const [{img, logo, title, disc, whyUsText}, setMainInfo] = useState({});
+    const [Posts, setPosts] = useState([]);
     
 
     useEffect(()=>{
         fetchMain(setMainInfo);
+        fetchPosts(setPosts);
+        
     }, [])
     return (
         <main>
@@ -44,7 +47,7 @@ const AdminPage = () => {
                     </button>
                 </div>
                 <ul className="posts__container _container">
-                    {}  
+                    {Posts.map((item) => <Post info={item}/>)}  
                 </ul>
             </section>
         </main>
