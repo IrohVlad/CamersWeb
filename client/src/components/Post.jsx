@@ -1,9 +1,10 @@
 import React from 'react'
 
+
 export default function Post({info}) {
   return (
     <li key={info.id} className="post_button">
-        <div className="post__text">{info.text}</div>
+        <div className="post__text">{info.title}</div>
 
         <div className="post__info">
             <div className="delete__button _btn">Удалить</div>

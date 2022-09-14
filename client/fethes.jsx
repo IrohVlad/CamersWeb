@@ -1,28 +1,6 @@
 import React from "react";
 import axios from "axios";
 import { SERVER } from "./utils/const";
-// export async function fetchItems(arr){
-//     await fetch('http://62.113.105.113:7000/api/categories', {
-//     method: 'GET',
-//     headers: {
-//         'Content-type': 'aplication/json'
-//     }
-//     }).then(data=> data.json())
-//     .then(data =>{
-//         arr(data);
-//     });
-// }
-// export async function fetchGallery(func, id){
-//     await fetch(`http://62.113.105.113:7000/api/category?id=${id}`, {
-//     method: 'GET',
-//     headers: {
-//         'Content-type': 'aplication/json'
-//     }
-//     }).then(data=> data.json())
-//     .then(data =>{
-//        func(data);
-//     });
-// }
 export async function fetchMain(func){
     await fetch(`http://localhost:7000/api/main`, {
     method: 'GET',
@@ -65,4 +43,13 @@ export async function fetchPosts(func){
     .then(data =>{
        func(data);
     });
+}
+export async function fetchLogin(inf){
+    await fetch(`http://localhost:7000/api/auth`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(inf)
+        });
 }

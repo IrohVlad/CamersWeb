@@ -14,8 +14,8 @@ const AdminPage = () => {
         
     }, [])
     return (
-        <main>
-            <section className="admin">
+        <main style={{backgroundColor: 'black'}}>
+            <section className="admin _container">
                 <div className="main-content">
                     <div className="title-input">
                         <input onChange={(e)=>{
@@ -46,7 +46,7 @@ const AdminPage = () => {
                         }}>Обновить
                     </button>
                 </div>
-                <ul className="posts__container _container">
+                <ul className="posts__container">
                     {Posts.map((item) => <Post info={item}/>)}  
                 </ul>
             </section>

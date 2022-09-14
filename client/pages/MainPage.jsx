@@ -26,6 +26,12 @@ const MainPage = () => {
                     {cardsInfo.map((item)=> <WhyUsCard info={item} />)}
                 </div>
             </section>
+            <section className='section-3 _container'>
+                <div className="main__blog-item"></div>
+                <div className="main__blog-item"></div>
+                <div className="main__blog-item"></div>
+                <div className="main__blog-item"></div>
+            </section>
         </main>
     );
 };

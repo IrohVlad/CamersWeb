@@ -25,9 +25,10 @@ const Posts = sequelize.define('posts', {
     // id: {type: DataTypes.INTEGER, primaryKey: true, autoIncremrnt: true},
     title: {type: DataTypes.STRING, allowNull: false},
     img: {type: DataTypes.STRING, allowNull: false},
-    text: {type: DataTypes.STRING, allowNull: false},
+    text: {type: DataTypes.TEXT, allowNull: false},
 })
 const Admin = sequelize.define('admin', {
+    login: {type: DataTypes.STRING, allowNull: false},
     password: {type: DataTypes.STRING, allowNull: false}
 })
 
