@@ -1,55 +1,24 @@
 import React, {useEffect, useState} from 'react';
 import { SERVER } from '../utils/const.js';
-import { fetchMain, fetchPosts, fetchMainPut } from '../fethes.jsx';
-import Post from '../src/components/Post.jsx';
+import { fetchMainGet, fetchPostsGet, fetchPriceGet, fetchWhyGet } from '../fethes.jsx';
+import AdminContainer from '../src/components/AdminContainer.jsx';
 
 const AdminPage = () => {
-    const [{img, logo, title, disc, whyUsText}, setMainInfo] = useState({});
-    const [Posts, setPosts] = useState([]);
-    
+    const [MainInfo, setMainInfo] = useState([]);
+    const [PostsInfo, setPostsInfo] = useState([]);
+    const [PriceInfo, setPriceInfo] = useState([]);
+    const [WhyInfo, setWhyInfo] = useState([]);
 
     useEffect(()=>{
-        fetchMain(setMainInfo);
-        fetchPosts(setPosts);
-        
+        fetchMainGet("GET", setMainInfo);
+        fetchPostsGet("GET", setPostsInfo);
+        fetchPriceGet("GET", setPriceInfo);
+        fetchWhyGet("GET", setWhyInfo);
     }, [])
+    console.log(MainInfo);
     return (
         <main style={{backgroundColor: 'black'}}>
-            <section className="admin _container">
-                <div className="main-content">
-                    <div className="title-input">
-                        <input onChange={(e)=>{
-                            const title = e.target.value;
-                            setMainInfo(
-                                {img, logo, title , disc, whyUsText})
-                            }} type="text" name='title' value={title} required="required" />
-                        <span>Название компании</span>
-                    </div>
-                    <div className="disc-input">
-                        <textarea onChange={(e)=>{
-                            const disc = e.target.value;
-                            setMainInfo(
-                                {img, logo, title , disc, whyUsText})
-                            }} name="disc" value={disc} required="required" />
-                        <span>Описание</span>
-                    </div>
-                    <div className="why-input">
-                        <textarea onChange={(e)=>{
-                            const whyUsText = e.target.value;
-                            setMainInfo(
-                                {img, logo, title , disc, whyUsText})
-                            }} name="whyUsText" value={whyUsText} required="required"  />
-                        <span>"Почему мы" текст</span>
-                    </div>
-                    <button onClick={()=>{
-                        fetchMainPut({img, logo, title, disc, whyUsText});
-                        }}>Обновить
-                    </button>
-                </div>
-                <ul className="posts__container">
-                    {Posts.map((item) => <Post info={item}/>)}  
-                </ul>
-            </section>
+            <AdminContainer AllSetters={[setMainInfo, setPostsInfo, setPriceInfo, setWhyInfo]} AllInfo={[MainInfo, PostsInfo, PriceInfo, WhyInfo]}/>
         </main>
     );
 };

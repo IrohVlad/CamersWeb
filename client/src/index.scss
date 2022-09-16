@@ -611,11 +611,15 @@ footer{
 .admin {
     margin-top: 70px;
     min-height: 100vh;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     .main-content {
+        &:not(:last-child) {
+            margin-bottom: 50px;
+        }
         box-sizing:border-box;
         padding: 15px;
         background-color: #000;
@@ -627,52 +631,60 @@ footer{
         display: flex;
         flex-direction: column;
         div {
+            border: 2px solid #FF2E00;
+            padding: 5px 10px;
+            border-radius: 15px;
             &:not(:last-child) {
                 margin-bottom: 30px;
             }
             position: relative;
-            input {
-                background-color: #000;
-                border: 2px solid #FF2E00;
-                color: white;
-                border-radius: 15px;
-                width: 100%;
-                &:focus~span,
-                 :valid~span {
-                    color: #FF2E00;
-                    transform: translateY(-20px);
-                    background-color: #0C0C0C;
+            div{
+                display: flex;
+                input {
+
+                    background-color: #000;
+                    border: 2px solid #FF2E00;
+                    color: white;
+                    border-radius: 15px;
+                    width: 100%;
+                    &:focus~span,
+                     :valid~span {
+                        color: #FF2E00;
+                        transform: translateY(-20px);
+                        background-color: #0C0C0C;
+                    }
+                    &:valid~span {
+                        color: #FF2E00;
+                        transform: translateY(-20px);
+                        background-color: #0C0C0C;
+                    }
                 }
-                &:valid~span {
-                    color: #FF2E00;
-                    transform: translateY(-20px);
-                    background-color: #0C0C0C;
+                textarea {
+                    background-color: #000;
+                    border: 2px solid #FF2E00;
+                    color: white;
+                    border-radius: 15px;
+                    width: 100%;
+                    
+                    &:focus~span,
+                     :valid~span {
+                        color: #FF2E00;
+                        transform: translateY(-20px);
+                        background-color: #0C0C0C;
+                    }
+                    &:valid~span {
+                        color: #FF2E00;
+                        transform: translateY(-20px);
+                        background-color: #0C0C0C;
+                    }
                 }
-            }
-            textarea {
-                background-color: #000;
-                border: 2px solid #FF2E00;
-                color: white;
-                border-radius: 15px;
-                width: 100%;
-                &:focus~span,
-                 :valid~span {
+                span {
                     color: #FF2E00;
-                    transform: translateY(-20px);
-                    background-color: #0C0C0C;
+                    font-size: 15px;
+                    position: absolute;
+                    top: 0;
+                    left: 13px;
                 }
-                &:valid~span {
-                    color: #FF2E00;
-                    transform: translateY(-20px);
-                    background-color: #0C0C0C;
-                }
-            }
-            span {
-                color: #FF2E00;
-                font-size: 15px;
-                position: absolute;
-                top: 0;
-                left: 13px;
             }
         }
         button {

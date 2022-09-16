@@ -16,7 +16,8 @@ export async function fetchMainPut(inf){
     await fetch(`http://localhost:7000/api/main`, {
         method: 'PATCH',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': `${localStorage.getItem('token')}`
         },
         body: JSON.stringify(inf)
         });
@@ -51,7 +52,91 @@ export async function fetchLogin(inf){
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(inf)
-        });
+        }).then(response => response.json())
+        .then(response => localStorage.setItem('token', response.token))
 }
 
 /*-------------------------------------------------------------------------------------------------------------*/
+export async function fetchMainGet(method, func){
+    await fetch(`${SERVER}/api/main`, {
+        method: `${method}`,
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }).then(data=> data.json()).then(data =>{
+        func(data);
+    });
+}
+export async function fetchMainPost(method, body){
+    await fetch(`${SERVER}/api/main`, {
+        method: `${method}`,
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `${localStorage.getItem('token')}`
+        },
+        body: JSON.stringify(body)
+    }); 
+}
+
+export async function fetchPostsGet(method, func){
+    await fetch(`${SERVER}/api/posts`, {
+        method: `${method}`,
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }).then(data=> data.json()).then(data =>{
+        func(data);
+    });
+}
+export async function fetchPostsPost(method, body){
+    await fetch(`${SERVER}/api/posts`, {
+        method: `${method}`,
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `${localStorage.getItem('token')}`
+        },
+        body: JSON.stringify(body)
+    }); 
+}
+
+export async function fetchPriceGet(method, func){
+    await fetch(`${SERVER}/api/price`, {
+        method: `${method}`,
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }).then(data=> data.json()).then(data =>{
+        func(data);
+    });
+}
+export async function fetchPricePost(method, body){
+    await fetch(`${SERVER}/api/price`, {
+        method: `${method}`,
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `${localStorage.getItem('token')}`
+        },
+        body: JSON.stringify(body)
+    }); 
+}
+
+export async function fetchWhyGet(method, func){
+    await fetch(`${SERVER}/api/why`, {
+        method: `${method}`,
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }).then(data=> data.json()).then(data =>{
+        func(data);
+    });
+}
+export async function fetchWhyPost(method, body){
+    await fetch(`${SERVER}/api/why`, {
+        method: `${method}`,
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `${localStorage.getItem('token')}`
+        },
+        body: JSON.stringify(body)
+    }); 
+}
