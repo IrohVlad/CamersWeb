@@ -5,6 +5,7 @@ const router = Router();
 
 router.get('/', WhyUsController.getWhyUs);
 router.post('/', WhyUsController.postWhyUs);
+router.patch('/', WhyUsController.changeWhyUs);
 router.delete('/', WhyUsController.deleteWhyUs)
 
 export default router;

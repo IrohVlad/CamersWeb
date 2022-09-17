@@ -1,6 +1,6 @@
 import React from 'react';
 
-const AdminContent = ({item, func}) => {
+const AdminContent = ({item, fetch, func}) => {
     return (
         <div className="main-content">
             {Object.keys(item).map(key => { 
@@ -14,13 +14,18 @@ const AdminContent = ({item, func}) => {
                     }
                     else{
                         return <div>
-                        <textarea onChange={(e)=>{func([...item, {[i]: e.target.value}])}} type="text" value={item[key][i]}></textarea>
+                        <textarea onChange={(e)=>{func({...item,[key]:{...item[key], [i]: e.target.value}})}} type="text" value={item[key][i]}></textarea>
                         <span>{i}</span>
                         </div>
                     }
                     })}
-                    <button>Изменить</button>
-                    <button>Удалить</button>
+                    <button onClick={(e)=>{
+                        fetch("PATCH", {...item[key]});
+
+                    }} >Изменить</button>
+                    <button onClick={(e)=>{
+                        fetch("DELETE", {...item[key]});
+                    }} >Удалить</button>
                 </div>
                 
             })}

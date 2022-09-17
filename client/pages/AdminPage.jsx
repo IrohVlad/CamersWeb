@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import { SERVER } from '../utils/const.js';
-import { fetchMainGet, fetchPostsGet, fetchPriceGet, fetchWhyGet } from '../fethes.jsx';
+import { fetchMainGet, fetchPostsGet, fetchPriceGet, fetchWhyGet, fetchMainPost, fetchPostsPost, fetchPricePost, fetchWhyPost } from '../fethes.jsx';
 import AdminContainer from '../src/components/AdminContainer.jsx';
 
 const AdminPage = () => {
@@ -18,7 +18,7 @@ const AdminPage = () => {
     console.log(MainInfo);
     return (
         <main style={{backgroundColor: 'black'}}>
-            <AdminContainer AllSetters={[setMainInfo, setPostsInfo, setPriceInfo, setWhyInfo]} AllInfo={[MainInfo, PostsInfo, PriceInfo, WhyInfo]}/>
+            <AdminContainer AllFetch={[fetchMainPost, fetchPostsPost, fetchPricePost, fetchWhyPost]} AllSetters={[setMainInfo, setPostsInfo, setPriceInfo, setWhyInfo]} AllInfo={{MainInfo, PostsInfo, PriceInfo, WhyInfo}}/>
         </main>
     );
 };

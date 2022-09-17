@@ -16,7 +16,7 @@ const router = Router();
 // upload.single('image')
 router.get('/', PostsController.getPosts);
 router.post('/', PostsController.postPost);
-router.put('/', PostsController.changePost);
+router.patch('/', PostsController.changePost);
 router.delete('/', PostsController.deletePost)
 
 export default router;
