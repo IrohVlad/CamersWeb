@@ -9,7 +9,7 @@ export default function Post({info}) {
         <div className="post__info">
             <div className="delete__button _btn">Удалить</div>
             <div className="change__button _btn">Изменить</div>
-            <div className="post__date ">{info.createdAt}</div>
+            <div className="post__date ">{info.updatedAt}</div>
         </div>
     </li> 
   )

@@ -67,7 +67,7 @@ export async function fetchMainGet(method, func){
         func(data);
     });
 }
-export async function fetchMainPost(method, body){
+export async function fetchMainPost(method, body, func){
     await fetch(`${SERVER}/api/main`, {
         method: `${method}`,
         headers: {
@@ -75,7 +75,9 @@ export async function fetchMainPost(method, body){
             'Authorization': `${localStorage.getItem('token')}`
         },
         body: JSON.stringify(body)
-    }); 
+    }).then(data=> data.json()).then(data =>{
+        func(data);
+    });
 }
 
 export async function fetchPostsGet(method, func){
@@ -88,7 +90,7 @@ export async function fetchPostsGet(method, func){
         func(data);
     });
 }
-export async function fetchPostsPost(method, body){
+export async function fetchPostsPost(method, body, func){
     await fetch(`${SERVER}/api/posts`, {
         method: `${method}`,
         headers: {
@@ -96,7 +98,9 @@ export async function fetchPostsPost(method, body){
             'Authorization': `${localStorage.getItem('token')}`
         },
         body: JSON.stringify(body)
-    }); 
+    }).then(data=> data.json()).then(data =>{
+        func(data);
+    });
 }
 
 export async function fetchPriceGet(method, func){
@@ -109,7 +113,7 @@ export async function fetchPriceGet(method, func){
         func(data);
     });
 }
-export async function fetchPricePost(method, body){
+export async function fetchPricePost(method, body, func){
     await fetch(`${SERVER}/api/price`, {
         method: `${method}`,
         headers: {
@@ -117,7 +121,9 @@ export async function fetchPricePost(method, body){
             'Authorization': `${localStorage.getItem('token')}`
         },
         body: JSON.stringify(body)
-    }); 
+    }).then(data=> data.json()).then(data =>{
+        func(data);
+    });
 }
 
 export async function fetchWhyGet(method, func){
@@ -130,7 +136,7 @@ export async function fetchWhyGet(method, func){
         func(data);
     });
 }
-export async function fetchWhyPost(method, body){
+export async function fetchWhyPost(method, body, func){
     await fetch(`${SERVER}/api/why`, {
         method: `${method}`,
         headers: {
@@ -138,5 +144,7 @@ export async function fetchWhyPost(method, body){
             'Authorization': `${localStorage.getItem('token')}`
         },
         body: JSON.stringify(body)
-    }); 
+    }).then(data=> data.json()).then(data =>{
+        func(data);
+    });
 }

@@ -1,15 +1,15 @@
 import { MainContent } from '../models/model.js'
 class MainController {
     async getContent(req, res) {
-        const Content = await MainContent.findAll();
+        const Content = await MainContent.findAll({attributes: ['img','logo','title', 'disc', 'whyUsText']});
         res.json(Content);
     }
     async changeContent(req, res) {
             const { img, logo, title, disc, whyUsText } = req.body;
             // const Content = await MainContent.findAll();
             MainContent.update({ img: img, logo: logo, title: title, disc: disc, whyUsText: whyUsText }, { where: { id: 1 } });
-            console.log(req.body);
-            res.json(req.body);
+            const Content = await MainContent.findAll({attributes: ['img','logo','title', 'disc', 'whyUsText']});
+            res.json(Content);
             // Content.img = img;
             // Content.logo = logo;
             // Content.title = title;

@@ -20,18 +20,16 @@ const AdminContent = ({refresh, item, fetch, func}) => {
                     }
                     })}
                     <button onClick={(e)=>{
-                        fetch("PATCH", {...item[key]});
+                        fetch("PATCH", {...item[key]}, func);
                     }} >Изменить</button>
                     <button type='submit' onClick={()=>{
-                        fetch("DELETE", {...item[key]});
-                        refresh[1](++refresh[0]);
+                        fetch("DELETE", {...item[key]}, func);
                     }} >Удалить</button>
                 </div>
                 
             })}
             <button onClick={()=>{
-                fetch("POST", {});
-                refresh[1](++refresh[0]);
+                fetch("POST", {}, func);
             }}>Создать</button>
         </div>
     );

@@ -19,7 +19,7 @@ const PriceList = sequelize.define('priceList', {
     // id: {type: DataTypes.INTEGER, primaryKey: true, autoIncremrnt: true},
     title: {type: DataTypes.STRING, allowNull: false},
     disc: {type: DataTypes.STRING, allowNull: false},
-    price: {type: DataTypes.INTEGER, allowNull: false},
+    price: {type: DataTypes.STRING, allowNull: false},
 })
 const Posts = sequelize.define('posts', {
     // id: {type: DataTypes.INTEGER, primaryKey: true, autoIncremrnt: true},
