@@ -1,6 +1,6 @@
 import express from "express";
 import dotenv from 'dotenv'
-import {MainContent, WhyUsCards, PriceList, Posts} from './models/model.js'
+import { MainContent, WhyUsCards, PriceList, Posts } from './models/model.js'
 import sequelize from './models/db.js'
 import cors from 'cors';
 import router from './routes/index.js';
@@ -17,13 +17,12 @@ app.use(express.static(path.resolve(__dirname, 'static')));
 app.use('/api', router);
 app.use(errorHandling);
 
-const start = async () => {
+const start = async() => {
     try {
         await sequelize.authenticate();
-        await sequelize.sync({alter: true});
-        app.listen(PORT, ()=> console.log(`server started on ${PORT}`));   
-    }
-    catch{
+        await sequelize.sync();
+        app.listen(PORT, () => console.log(`server started on ${PORT}`));
+    } catch {
         throw new Error('не удалось запустить')
     }
 }

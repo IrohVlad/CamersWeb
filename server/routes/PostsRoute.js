@@ -1,5 +1,6 @@
 import { Router } from "express";
 import PostsController from "../controllers/PostsController.js";
+import authChech from "../middleware/authChech.js";
 import multer from 'multer';
 
 const storage = multer.diskStorage({
@@ -15,8 +16,8 @@ const upload = multer({ storage });
 const router = Router();
 // upload.single('image')
 router.get('/', PostsController.getPosts);
-router.post('/', PostsController.postPost);
-router.patch('/', PostsController.changePost);
-router.delete('/', PostsController.deletePost)
+router.post('/', authChech, PostsController.postPost);
+router.patch('/', authChech, PostsController.changePost);
+router.delete('/', authChech, PostsController.deletePost)
 
 export default router;

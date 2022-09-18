@@ -1,12 +1,12 @@
 import React from 'react';
 
-const AdminContent = ({item, fetch, func}) => {
+const AdminContent = ({refresh, item, fetch, func}) => {
     return (
         <div className="main-content">
             {Object.keys(item).map(key => { 
                 return<div>
                     {Object.keys(item[key]).map(i => {
-                    if (i == 'img' || i == 'icon'){
+                    if (i == 'img' || i == 'icon' || i == 'logo'){
                         return <div>
                         <input type="file"></input>
                         <span>{i}</span>
@@ -21,15 +21,18 @@ const AdminContent = ({item, fetch, func}) => {
                     })}
                     <button onClick={(e)=>{
                         fetch("PATCH", {...item[key]});
-
                     }} >Изменить</button>
-                    <button onClick={(e)=>{
+                    <button type='submit' onClick={()=>{
                         fetch("DELETE", {...item[key]});
+                        refresh[1](++refresh[0]);
                     }} >Удалить</button>
                 </div>
                 
             })}
-            <button>Создать</button>
+            <button onClick={()=>{
+                fetch("POST", {});
+                refresh[1](++refresh[0]);
+            }}>Создать</button>
         </div>
     );
 };
