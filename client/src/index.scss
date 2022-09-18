@@ -404,9 +404,10 @@ header {
     width: 100%;
     z-index: 2;
     color: white;
+    transition: all;
+    transition-duration: 1000ms;
     .header {
-        transition: all;
-        transition-duration: 1000ms;
+        
         height: 60px;
         display: flex;
         align-items: center;
@@ -490,11 +491,11 @@ header {
             }
         }
     }
-    .header__color {
-        background-color: rgb(93, 216, 189);
-    }
+    
 }
-
+.header__color {
+    background-color: rgb(93, 216, 189);
+}
 
 /*-----------------------------------------main------------------------------------------------------------*/
 main{

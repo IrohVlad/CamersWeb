@@ -14,8 +14,8 @@ const Header = () => {
         fetchMain(setMainInfo);
     }, [])
     return (
-        <header>
-            <div className={route.pathname == "/" ? "header _container" : "header _container header__color"}>
+        <header className={route.pathname == "/" ? "" : "header__color"}>
+            <div className={"header _container"}>
                 <div className="header__logo logo">
                     <div className="logo__icon">
                         <img src={`${SERVER}/${mainInfo.logo}`} alt="" />

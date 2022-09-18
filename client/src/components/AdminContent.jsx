@@ -12,6 +12,9 @@ const AdminContent = ({refresh, item, fetch, func}) => {
                         <span>{i}</span>
                         </div>
                     }
+                    else if(i == 'id'){
+                        return "";
+                    }
                     else{
                         return <div>
                         <textarea onChange={(e)=>{func({...item,[key]:{...item[key], [i]: e.target.value}})}} type="text" value={item[key][i]}></textarea>
