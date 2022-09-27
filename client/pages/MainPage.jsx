@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import WhyUsCard from '../src/components/WhyUsCard.jsx';
 import { SERVER } from '../utils/const.js';
-import { fetchMain, fetchCards } from '../fethes.jsx';
+import { fetchMain, fetchCards, fetchMainPosts} from '../fethes.jsx';
+import Post from '../src/components/Post.jsx';
 
 const MainPage = () => {
     // const cardsInfo = [{
@@ -9,10 +10,13 @@ const MainPage = () => {
     // text: "Скорость",}];
     const [mainInfo, setMainInfo] = useState({});
     const [cardsInfo, setCardsInfo] = useState([]);
+    const [mainPosts, setMainPosts] = useState([]);
     useEffect(()=>{
         fetchMain(setMainInfo);
         fetchCards(setCardsInfo);
+        fetchMainPosts(setMainPosts);
     }, [])
+    console.log(mainPosts);
     return (
         <main>
             <section className='section-1'>
@@ -27,10 +31,7 @@ const MainPage = () => {
                 </div>
             </section>
             <section className='section-3 _container'>
-                <div className="main__blog-item"></div>
-                <div className="main__blog-item"></div>
-                <div className="main__blog-item"></div>
-                <div className="main__blog-item"></div>
+                {mainPosts.map((item)=> <Post info={item}/>)}
             </section>
         </main>
     );

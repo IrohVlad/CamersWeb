@@ -12,8 +12,16 @@ class WhyUsController {
     }
     async changeWhyUs(req, res) {
         const { id, icon, title, text } = req.body;
-        const Card = await WhyUsCards.update({ icon, title, text }, { where: { id: id } });
+        let image;
+        if (req.file){
+            image = req.file.originalname;
+        }
+        else{
+            image = icon;
+        }
+        WhyUsCards.update({ icon: image, title, text }, { where: { id: id } });
         const Cards = await WhyUsCards.findAll({attributes: ['id','icon','title','text']});
+        console.log({ id, icon, title, text });
         res.json(Cards);
     }
     async deleteWhyUs(req, res) {

@@ -14,10 +14,10 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 const router = Router();
-// upload.single('image')
 router.get('/', PostsController.getPosts);
-router.post('/', authChech, PostsController.postPost);
-router.patch('/', authChech, PostsController.changePost);
-router.delete('/', authChech, PostsController.deletePost)
+router.get('/pre', PostsController.getPrePosts);
+router.post('/', authChech, upload.single('img'), PostsController.postPost);
+router.patch('/', authChech, upload.single('img'), PostsController.changePost);
+router.delete('/', authChech, upload.single('img'), PostsController.deletePost)
 
 export default router;

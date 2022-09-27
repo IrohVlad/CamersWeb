@@ -45,6 +45,28 @@ export async function fetchPosts(func){
        func(data);
     });
 }
+export async function fetchOnePost(func, id){
+    await fetch(`http://localhost:7000/api/posts?id=${id}`, {
+    method: 'GET',
+    headers: {
+        'Content-type': 'aplication/json'
+    }
+    }).then(data=> data.json())
+    .then(data =>{
+       func(data);
+    });
+}
+export async function fetchMainPosts(func){
+    await fetch(`http://localhost:7000/api/posts/pre?limit=3`, {
+    method: 'GET',
+    headers: {
+        'Content-type': 'aplication/json'
+    }
+    }).then(data=> data.json())
+    .then(data =>{
+       func(data);
+    });
+}
 export async function fetchLogin(inf){
     await fetch(`http://localhost:7000/api/auth`, {
         method: 'POST',
@@ -54,6 +76,16 @@ export async function fetchLogin(inf){
         body: JSON.stringify(inf)
         }).then(response => response.json())
         .then(response => localStorage.setItem('token', response.token))
+}
+
+export async function fetchAuthCheck(){
+    await fetch(`http://localhost:7000/api/auth/check`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `${localStorage.getItem('token')}`
+        },
+        });
 }
 
 /*-------------------------------------------------------------------------------------------------------------*/
@@ -71,10 +103,9 @@ export async function fetchMainPost(method, body, func){
     await fetch(`${SERVER}/api/main`, {
         method: `${method}`,
         headers: {
-            'Content-Type': 'application/json',
             'Authorization': `${localStorage.getItem('token')}`
         },
-        body: JSON.stringify(body)
+        body: body
     }).then(data=> data.json()).then(data =>{
         func(data);
     });
@@ -94,10 +125,9 @@ export async function fetchPostsPost(method, body, func){
     await fetch(`${SERVER}/api/posts`, {
         method: `${method}`,
         headers: {
-            'Content-Type': 'application/json',
             'Authorization': `${localStorage.getItem('token')}`
         },
-        body: JSON.stringify(body)
+        body: body
     }).then(data=> data.json()).then(data =>{
         func(data);
     });
@@ -117,10 +147,9 @@ export async function fetchPricePost(method, body, func){
     await fetch(`${SERVER}/api/price`, {
         method: `${method}`,
         headers: {
-            'Content-Type': 'application/json',
             'Authorization': `${localStorage.getItem('token')}`
         },
-        body: JSON.stringify(body)
+        body: body
     }).then(data=> data.json()).then(data =>{
         func(data);
     });
@@ -140,10 +169,9 @@ export async function fetchWhyPost(method, body, func){
     await fetch(`${SERVER}/api/why`, {
         method: `${method}`,
         headers: {
-            'Content-Type': 'application/json',
             'Authorization': `${localStorage.getItem('token')}`
         },
-        body: JSON.stringify(body)
+        body: body
     }).then(data=> data.json()).then(data =>{
         func(data);
     });

@@ -377,6 +377,7 @@ body {
     overflow: hidden;
     position: relative;
     min-height: 100vh;
+    background-color:rgb(234, 234, 234);
 }
 
 ._container {
@@ -413,11 +414,11 @@ header {
         align-items: center;
         justify-content: space-between;
         .logo {
+            color: white;
             display: flex;
             .logo__icon {
                 height: 45px;
                 width: 45px;
-                background-color: #b3d4fc;
                 margin-right: 10px;
                 img {
                     height: 100%;
@@ -557,10 +558,11 @@ main{
         gap: 18px;
         .card {
             width: 100%;
-            border-radius: 7px;
-            box-shadow: 1px 1px 10px rgb(136,
-            132,
-            132);
+            // border-radius: 7px;
+            background-color: white;
+            // box-shadow: 1px 1px 10px rgb(136,
+            // 132,
+            // 132);
             display: flex;
             align-items: center;
             .card__icon {
@@ -583,10 +585,29 @@ main{
     margin-top: 50px;
     display: grid;
     grid-template-columns: repeat(3, minmax(300px, auto));
-    grid-template-rows: 350px;
+    grid-template-rows: minmax(300px, auto);
     gap: 15px;
     .main__blog-item{
-        background-color:rgb(93, 216, 179);
+        color: black;
+        cursor: pointer;
+        background-color:white;
+        display: flex;
+        flex-direction: column;
+        .img{
+            height: 250px;
+            width: 100%;
+            img{
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+                object-position: center;
+            }
+        }
+        .text {
+            font-size: 18px;
+            font-weight: 500;
+            padding: 15px;
+        }
     }
 }
 
@@ -596,13 +617,33 @@ footer{
     width: 100%;
     height: 200px;
     background-color: rgb(93, 216, 179);
+    margin-top: 40px;
     .footer{
         color: white;
         height: 100%;
         width: 100%;
         display: flex;
         align-items:center;
-        justify-content: center;
+        justify-content: flex-start;
+        .footer-content{
+            width: fit-content;
+            .footer__text{
+                font-size: 15px;
+                margin-bottom: 12px;
+            }
+            .footer__icons{
+                display: flex;
+                align-items:center;
+
+                .icon-link{
+                    width: 27px;
+                    height: 27px;
+                    &:not(:last-child){
+                        margin-right: 25px;
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -734,6 +775,7 @@ footer{
 
 .login {
     height: 100vh;
+    width: 100%;
     background-color: #000;
     display: flex;
     flex-direction: column;
@@ -799,16 +841,23 @@ footer{
     width: 100%;
     box-sizing:border-box;
     grid-template-columns: repeat(auto-fit, minmax(300px, auto));
-    grid-template-rows: 350px;
+    grid-template-rows: repeat(auto-fit, minmax(300px, auto));
     gap: 15px;
     .blog-post {
+        color: black;
+        cursor: pointer;
         overflow: hidden;
         border-radius: 20px;
-        box-shadow: 1px 1px 10px rgb(136,
-        132,
-        132);
+        min-height: 300px;
+        max-width: 500px;
+        display: flex;
+        flex-direction: column;
+        background-color: white;
+        // box-shadow: 1px 1px 10px rgb(136,
+        // 132,
+        // 132);
         .post__img {
-            height: 70%;
+            height: 200px;
             width: 100%;
             img {
                 height: 100%;
@@ -818,11 +867,12 @@ footer{
             }
         }
         .post__text {
+            font-size: 25px;
+            font-weight: 500;
             box-sizing: border-box;
-            padding: 10px;
-            height: 20%;
+            padding: 15px;
+            flex: 1 1;
             width: 100%;
-            overflow: hidden;
         }
         .post__date {
             background-color: rgb(93, 216, 189);
@@ -830,11 +880,46 @@ footer{
             color: white;
             padding: 0 20px;
             width: 100%;
-            height: 10%;
+            height: 30px;
             display: flex;
             align-items: center;
             justify-content: end;
         }
+    }
+}
+
+.post-section{
+    box-sizing:border-box;
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color:white;
+    min-height: 100vh;
+    .title{
+        padding: 20px;
+        font-size: 25px;
+        font-weight: 500;
+    }
+    .img{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color:#e4e4e4;
+        width: 100%;
+        height: 530px;
+        img{
+            max-width: 100%;
+            height: 100%;
+            object-position: center;
+            object-fit: cover;
+        }
+    }
+    .text{
+        line-height:23px;
+        padding: 20px;
+        font-size: 18px;
+        font-weight: 500;
     }
 }
 
@@ -864,7 +949,6 @@ footer{
                 .logo__icon {
                     height: 45px;
                     width: 45px;
-                    background-color: #b3d4fc;
                     margin-right: 10px;
                     img {
                         height: 100%;
@@ -946,6 +1030,46 @@ footer{
                 }
                 .card__text {}
             }
+        }
+    }
+    .blog-section {
+
+        .blog-post {
+
+            max-width: none;
+
+        }
+    }
+    .post-section{
+        margin-top: 60px;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        background-color:white;
+        min-height: 100vh;
+        .title{
+            padding: 20px;
+            font-size: 25px;
+            font-weight: 500;
+        }
+        .img{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color:#e4e4e4;
+            width: 100%;
+            height: fit-content;
+            img{
+                max-width: 100%;
+                height: 100%;
+                object-position: center;
+                object-fit: cover;
+            }
+        }
+        .text{
+            padding: 20px;
+            font-size: 18px;
+            font-weight: 500;
         }
     }
 }

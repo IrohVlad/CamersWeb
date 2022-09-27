@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import HeaderNav from './HeaderNav.jsx';
 import { SERVER } from '../../utils/const.js';
 import { fetchMain } from '../../fethes.jsx';
@@ -16,12 +16,12 @@ const Header = () => {
     return (
         <header className={route.pathname == "/" ? "" : "header__color"}>
             <div className={"header _container"}>
-                <div className="header__logo logo">
+                <Link to={'/'} className="header__logo logo">
                     <div className="logo__icon">
                         <img src={`${SERVER}/${mainInfo.logo}`} alt="" />
                     </div>
                     <div className="logo__title">{mainInfo.title}</div>
-                </div>
+                </Link>
                 <ul className="header__nav nav">
                     <HeaderNav/>
                 </ul>

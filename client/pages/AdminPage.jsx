@@ -4,7 +4,6 @@ import { fetchMainGet, fetchPostsGet, fetchPriceGet, fetchWhyGet, fetchMainPost,
 import AdminContainer from '../src/components/AdminContainer.jsx';
 
 const AdminPage = () => {
-    const [refresher, setRefresher] = useState(1);
     const [MainInfo, setMainInfo] = useState([]);
     const [PostsInfo, setPostsInfo] = useState([]);
     const [PriceInfo, setPriceInfo] = useState([]);
@@ -15,11 +14,11 @@ const AdminPage = () => {
         fetchPostsGet("GET", setPostsInfo);
         fetchPriceGet("GET", setPriceInfo);
         fetchWhyGet("GET", setWhyInfo);
-    }, [refresher])
+    }, [])
     console.log(MainInfo);
     return (
         <main style={{backgroundColor: 'black'}}>
-            <AdminContainer refresh={[refresher, setRefresher]} AllFetch={[fetchMainPost, fetchPostsPost, fetchPricePost, fetchWhyPost]} AllSetters={[setMainInfo, setPostsInfo, setPriceInfo, setWhyInfo]} AllInfo={{MainInfo, PostsInfo, PriceInfo, WhyInfo}}/>
+            <AdminContainer AllFetch={[fetchMainPost, fetchPostsPost, fetchPricePost, fetchWhyPost]} AllSetters={[setMainInfo, setPostsInfo, setPriceInfo, setWhyInfo]} AllInfo={{MainInfo, PostsInfo, PriceInfo, WhyInfo}}/>
         </main>
     );
 };

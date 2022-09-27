@@ -4,4 +4,5 @@ export const CONTACTS_ROUTE = 'contacts';
 export const PRICE_ROUTE = 'price';
 export const ADMIN_ROUTE = 'admin';
 export const LOGIN_ROUTE = 'auth';
+export const POST_ROUTE = 'post';
 export const SERVER = 'http://localhost:7000';

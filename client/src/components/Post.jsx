@@ -1,16 +1,14 @@
-import React from 'react'
-
+import React from 'react';
+import { SERVER } from '../../utils/const';
+import {Link} from 'react-router-dom';
 
 export default function Post({info}) {
   return (
-    <li key={info.id} className="post_button">
-        <div className="post__text">{info.title}</div>
-
-        <div className="post__info">
-            <div className="delete__button _btn">Удалить</div>
-            <div className="change__button _btn">Изменить</div>
-            <div className="post__date ">{info.updatedAt}</div>
+    <Link to={`/post?id=${info.id}`} className="main__blog-item">
+      <div className="img">
+        <img src={`${SERVER}/${info.img}`} alt="" />
         </div>
-    </li> 
+      <div className="text">{info.title}</div>
+    </Link>
   )
 }

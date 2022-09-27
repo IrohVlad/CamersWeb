@@ -32,5 +32,8 @@ class AuthController {
         const admin = await Admin.create({ login: login, password: passHash })
         res.send([admin, req.body]);
     }
+    async getAuth(req, res){
+        res.send('все ок');
+    }
 }
 export default new AuthController;

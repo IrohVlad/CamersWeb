@@ -1,18 +1,19 @@
 import React from 'react';
+import axios from 'axios';
 
-const AdminContent = ({refresh, item, fetch, func}) => {
+const AdminContent = ({item, fetch, func}) => {
     return (
         <div className="main-content">
             {Object.keys(item).map(key => { 
                 return<div>
                     {Object.keys(item[key]).map(i => {
-                    if (i == 'img' || i == 'icon' || i == 'logo'){
+                    if (i == 'img' || i == 'icon'){
                         return <div>
-                        <input type="file"></input>
+                        <input type="file" onChange={e => {func({...item,[key]:{...item[key], [i]: e.target.files[0]}})}}></input>
                         <span>{i}</span>
                         </div>
                     }
-                    else if(i == 'id'){
+                    else if(i == 'id' || i == 'logo'){
                         return "";
                     }
                     else{
@@ -23,10 +24,20 @@ const AdminContent = ({refresh, item, fetch, func}) => {
                     }
                     })}
                     <button onClick={(e)=>{
-                        fetch("PATCH", {...item[key]}, func);
+                        const form = new FormData();
+                        Object.keys(item[key]).forEach(elem => {
+                            form.append( elem, item[key][elem]);
+                        })
+                        console.log({...item[key]});
+                        fetch("PATCH", form, func);
                     }} >Изменить</button>
-                    <button type='submit' onClick={()=>{
-                        fetch("DELETE", {...item[key]}, func);
+                    <button onClick={(e)=>{
+                        const form = new FormData();
+                        Object.keys(item[key]).forEach(elem => {
+                            form.append( elem, item[key][elem]);
+                        })
+                        console.log({...item[key]});
+                        fetch("DELETE", form, func);
                     }} >Удалить</button>
                 </div>
                 

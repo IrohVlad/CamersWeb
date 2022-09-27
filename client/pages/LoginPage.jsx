@@ -1,9 +1,35 @@
-import React, {useState} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import { fetchLogin } from '../fethes.jsx';
+import { auth } from '../src/components/AppRouter.jsx';
 
 const LoginPage = () => {
 
     const [{login, password}, setInfo] = useState({login:"", password:""})
+    const [dataSend, setDataSend] = useState(true);
+
+    const {authStatus, setAuthStatus} = useContext(auth);
+
+    useEffect(()=>{
+        async function checkFunk(func) {
+          await fetch(`http://localhost:7000/api/auth/check`, {
+              method: 'GET',
+              headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': `${localStorage.getItem('token')}`
+              },
+            }).then(response => {
+              if(response.ok){
+                func(true);
+                console.log('токен подтвержден', authStatus);
+              }
+              else{
+                func(false);
+                console.log('ошибка токена', authStatus);
+              }
+            });
+        }
+        checkFunk(setAuthStatus);
+      },[dataSend])
 
     return (
         <main>
@@ -14,12 +40,13 @@ const LoginPage = () => {
                         <span>Логин</span>
                     </div>
                     <div className="password-input">
-                        <input onChange={(e)=>{setInfo({login:login, password:e.target.value})}} type="text" name='password' required="required" />  
+                        <input typeof='password' onChange={(e)=>{setInfo({login:login, password:e.target.value})}} type="text" name='password' required="required" />  
                         <span>Пароль</span>
                     </div>
-                    <button type="submit" onClick={(e)=>{
+                    <button type="submit" onClick={async (e)=>{
                         e.preventDefault();
-                        fetchLogin({login, password});
+                        await fetchLogin({login, password});
+                        setDataSend(!dataSend);
                         }}>
                         Войти
                     </button>
